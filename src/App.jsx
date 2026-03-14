@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login.jsx';
 import Dashboard from './pages/admin/Dashboard.jsx';
 import { ProtectedRoute } from './router/ProtectedRoute.jsx';
+import AdminLayout from './layouts/AdminLayout.jsx';
+import Tickets from "./pages/admin/Tickets.jsx";
 
 function App() {
     return (
@@ -10,8 +12,16 @@ function App() {
             <Route path="/login" element={<Login />} />
 
             <Route element={<ProtectedRoute />}>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/admin" element={<Dashboard />} />
+                <Route path="/admin" element={<AdminLayout />}>
+                    <Route index element={<Dashboard />} />
+                    <Route path="tickets" element={<Tickets />} />
+                    {/* futuras rutas admin aquí */}
+                </Route>
+
+                {/* opcional: redirigir / al dashboard */}
+                <Route path="/" element={<AdminLayout />}>
+                    <Route index element={<Dashboard />} />
+                </Route>
             </Route>
         </Routes>
     );
