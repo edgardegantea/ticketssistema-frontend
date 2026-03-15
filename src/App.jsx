@@ -5,6 +5,8 @@ import Dashboard from './pages/admin/Dashboard.jsx';
 import { ProtectedRoute } from './router/ProtectedRoute.jsx';
 import AdminLayout from './layouts/AdminLayout.jsx';
 import Tickets from "./pages/admin/Tickets.jsx";
+import TicketCreate from "./pages/admin/TicketCreate.jsx";
+import TicketShow from  "./pages/admin/TicketShow.jsx";
 
 function App() {
     return (
@@ -15,6 +17,8 @@ function App() {
                 <Route path="/admin" element={<AdminLayout />}>
                     <Route index element={<Dashboard />} />
                     <Route path="tickets" element={<Tickets />} />
+                    <Route path="tickets/nuevo" element={<TicketCreate />} />
+                    <Route path="tickets/:id" element={<TicketShow />} />
                     {/* futuras rutas admin aquí */}
                 </Route>
 
